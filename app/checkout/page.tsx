@@ -67,7 +67,7 @@ export default function CheckoutPage() {
                       </p>
                     </div>
                     <p className="font-medium">
-                      Rp. {(item.book.price * item.quantity).toFixed(3)}
+                      Ro. {(item.book.price * item.quantity).toFixed(3)}
                     </p>
                   </div>
                 ))}

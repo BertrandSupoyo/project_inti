@@ -92,7 +92,7 @@ export const books: Book[] = [
     language: "English",
     featured: true,
     sampleUrl:
-      "https://www.gutenberg.org/ebooks/1342.html.images",
+      "/samples/diary-of-a-young-girl-sample.pdf",
     price: 49.000
   },
   {

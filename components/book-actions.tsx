@@ -1,9 +1,10 @@
 "use client"
 
-import { Book } from "@/app/types/book"
+import { useEffect, useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/lib/cart"
-import Link from "next/link"
+import { Book } from "@/app/types/book"
 
 interface BookActionsProps {
   book: Book
@@ -11,6 +12,15 @@ interface BookActionsProps {
 
 export function BookActions({ book }: BookActionsProps) {
   const cart = useCart()
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) {
+    return null
+  }
 
   return (
     <div className="flex gap-4">
@@ -20,13 +30,8 @@ export function BookActions({ book }: BookActionsProps) {
             Read Sample
           </Link>
         </Button>
-      ) : (
-        <Button variant="outline" disabled>Sample Not Available</Button>
-      )}
-      
-      <Button onClick={() => cart.addItem(book)}>
-        Add to Cart - Rp. {book.price.toFixed(3)}
-      </Button>
+      ) : null}
+      <Button onClick={() => cart.addItem(book)}>Add to Cart</Button>
     </div>
   )
 } 
